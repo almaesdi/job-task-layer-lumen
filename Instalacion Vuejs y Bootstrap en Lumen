@@ -1,0 +1,70 @@
+Dado que lumen es una version light de laravel, no contiene preinstalado el vuejs, por lo que
+se debe instalar de manera manual:
+
+-   Primero ejecutaremos el comando:
+        npm init
+
+    Este creara el archivo package.json para el futuro manejo de dependencias de nuestro frontend
+
+-   Laravel Mix
+        npm install laravel-mix --save-dev
+
+    Copiamos el archivo ejemplo de laravel mix
+        cp -r node_modules/laravel-mix/setup/webpack.mix.js ./
+
+    Lo modificamos su contenido por:
+
+          let mix = require('laravel-mix');
+
+            mix.js('resources/assets/js/main.js', 'public/js')
+                .sass('resources/assets/sass/app.scss', 'public/css');
+
+- Vuejs (y otras dependencias)
+    npm install --savedev vue vue-router vuex axios
+
+- Estructuracion Carpetas Frontend
+
+    Creamos la carpetas siguientes carpetas (y subcarpetas) en "resources":
+        assets
+        assets/js
+        assets/sass
+
+    Dentro de assets/js craremos el JS de nuestro componente principal llamado:
+        main.js
+
+    Dentro de resources/view crearemos nuestra pagina principal de la aplicacion llamada:
+        index.blade.php
+
+    Crearemos la carpeta de componentes dentro de resources/assets/js llamada:
+        components
+
+- Scripts de compilacion de vista
+
+    Instalamos la ultima dependencia para poder comprimir nuestros archivos:
+        npm install "cross-env" --savedev
+
+    Finalmente agregamos los siguientes scripts a nuestro package.json:
+
+    "scripts": {
+    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+
+- Instalar bootsrap (jquery)
+
+    Ejecutamos boostraps y sus dependencias con el siguiente comando:
+        npm install bootstrap jquery popper.js --save
+
+    En el directorio resources/assets/js creamos el archivo:
+        bootstrap.js
+
+    Requerimos el archivo anteriormente creado en nuestro main.js
+
+    Y creamos los archivos para importar el css en la carpeta resources/assets/sass:
+        app.scss
+
+            // Bootstrap
+            @import '~bootstrap/scss/bootstrap';
+
