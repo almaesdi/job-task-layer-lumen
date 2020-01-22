@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91fc8c41226ea4e534ebfc160f2acc8c",
+    "content-hash": "bde89f99db5b0aa3add2b845f6cfc279",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -248,8 +248,54 @@
             "time": "2020-01-20T21:40:59+00:00"
         },
         {
+            "name": "firebase/php-jwt",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "9984a4d3a32ae7673d6971ea00bae9d0a1abba0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/9984a4d3a32ae7673d6971ea00bae9d0a1abba0e",
+                "reference": "9984a4d3a32ae7673d6971ea00bae9d0a1abba0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": " 4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2017-06-27T22:17:23+00:00"
+        },
+        {
             "name": "illuminate/auth",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/auth.git",
@@ -300,7 +346,7 @@
         },
         {
             "name": "illuminate/broadcasting",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/broadcasting.git",
@@ -351,7 +397,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -396,16 +442,16 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
-                "reference": "f64335a4678512440c94c2511d0df423de496aee"
+                "reference": "e75f1a222cea581deb1da3072440eaba965b7283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/f64335a4678512440c94c2511d0df423de496aee",
-                "reference": "f64335a4678512440c94c2511d0df423de496aee",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/e75f1a222cea581deb1da3072440eaba965b7283",
+                "reference": "e75f1a222cea581deb1da3072440eaba965b7283",
                 "shasum": ""
             },
             "require": {
@@ -443,11 +489,11 @@
             ],
             "description": "The Illuminate Cache package.",
             "homepage": "https://laravel.com",
-            "time": "2020-01-07T13:47:03+00:00"
+            "time": "2020-01-21T14:27:12+00:00"
         },
         {
             "name": "illuminate/config",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -491,7 +537,7 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -542,7 +588,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -586,7 +632,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -630,16 +676,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "1b904eafa5d14a97dba84d6c66633a2af7537d1b"
+                "reference": "265b9b6849b517ef65bef1cb75b537fbff4a1734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/1b904eafa5d14a97dba84d6c66633a2af7537d1b",
-                "reference": "1b904eafa5d14a97dba84d6c66633a2af7537d1b",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/265b9b6849b517ef65bef1cb75b537fbff4a1734",
+                "reference": "265b9b6849b517ef65bef1cb75b537fbff4a1734",
                 "shasum": ""
             },
             "require": {
@@ -686,11 +732,11 @@
                 "orm",
                 "sql"
             ],
-            "time": "2020-01-14T14:10:23+00:00"
+            "time": "2020-01-20T15:57:38+00:00"
         },
         {
             "name": "illuminate/encryption",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/encryption.git",
@@ -737,7 +783,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -782,16 +828,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "6697d8df3cf09d420f67d708ad33aa749eb8ed6c"
+                "reference": "f94e71adfd9d4c9a8faaf5b3fe8e4c5f4be4c536"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/6697d8df3cf09d420f67d708ad33aa749eb8ed6c",
-                "reference": "6697d8df3cf09d420f67d708ad33aa749eb8ed6c",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/f94e71adfd9d4c9a8faaf5b3fe8e4c5f4be4c536",
+                "reference": "f94e71adfd9d4c9a8faaf5b3fe8e4c5f4be4c536",
                 "shasum": ""
             },
             "require": {
@@ -830,11 +876,11 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2020-01-07T13:47:03+00:00"
+            "time": "2020-01-21T13:56:29+00:00"
         },
         {
             "name": "illuminate/hashing",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/hashing.git",
@@ -878,16 +924,16 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "045d33bed64f64c32f8f4e21eb2dfc1794703592"
+                "reference": "68462f731338ce845b69497e135a0f6db6e109cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/045d33bed64f64c32f8f4e21eb2dfc1794703592",
-                "reference": "045d33bed64f64c32f8f4e21eb2dfc1794703592",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/68462f731338ce845b69497e135a0f6db6e109cc",
+                "reference": "68462f731338ce845b69497e135a0f6db6e109cc",
                 "shasum": ""
             },
             "require": {
@@ -924,11 +970,11 @@
             ],
             "description": "The Illuminate Http package.",
             "homepage": "https://laravel.com",
-            "time": "2020-01-13T10:58:53+00:00"
+            "time": "2020-01-17T19:38:45+00:00"
         },
         {
             "name": "illuminate/log",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/log.git",
@@ -973,7 +1019,7 @@
         },
         {
             "name": "illuminate/pagination",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pagination.git",
@@ -1018,7 +1064,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -1063,7 +1109,7 @@
         },
         {
             "name": "illuminate/queue",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/queue.git",
@@ -1123,7 +1169,7 @@
         },
         {
             "name": "illuminate/session",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -1174,16 +1220,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "e1fbc940c2f26591e17cae2156cb7c9a8e062121"
+                "reference": "0c6bf7cd56a63e46358e6443f90293e429546bc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/e1fbc940c2f26591e17cae2156cb7c9a8e062121",
-                "reference": "e1fbc940c2f26591e17cae2156cb7c9a8e062121",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/0c6bf7cd56a63e46358e6443f90293e429546bc8",
+                "reference": "0c6bf7cd56a63e46358e6443f90293e429546bc8",
                 "shasum": ""
             },
             "require": {
@@ -1231,11 +1277,11 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-01-13T16:18:12+00:00"
+            "time": "2020-01-21T13:52:46+00:00"
         },
         {
             "name": "illuminate/translation",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
@@ -1281,16 +1327,16 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
-                "reference": "d391b7914e85c1f921ffe2048149cae87489ee76"
+                "reference": "7ab9d8f0e9b8472ae408795f7c3719482793f845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/validation/zipball/d391b7914e85c1f921ffe2048149cae87489ee76",
-                "reference": "d391b7914e85c1f921ffe2048149cae87489ee76",
+                "url": "https://api.github.com/repos/illuminate/validation/zipball/7ab9d8f0e9b8472ae408795f7c3719482793f845",
+                "reference": "7ab9d8f0e9b8472ae408795f7c3719482793f845",
                 "shasum": ""
             },
             "require": {
@@ -1329,11 +1375,11 @@
             ],
             "description": "The Illuminate Validation package.",
             "homepage": "https://laravel.com",
-            "time": "2020-01-12T15:00:09+00:00"
+            "time": "2020-01-16T13:33:26+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -1382,16 +1428,16 @@
         },
         {
             "name": "laravel/lumen-framework",
-            "version": "v6.3.0",
+            "version": "v6.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/lumen-framework.git",
-                "reference": "ffa356c72e374b6a2c4e8880378f3133cb3b7385"
+                "reference": "c199316729bbd0c42c8c46d68e3df2e9d79ca4a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/ffa356c72e374b6a2c4e8880378f3133cb3b7385",
-                "reference": "ffa356c72e374b6a2c4e8880378f3133cb3b7385",
+                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/c199316729bbd0c42c8c46d68e3df2e9d79ca4a6",
+                "reference": "c199316729bbd0c42c8c46d68e3df2e9d79ca4a6",
                 "shasum": ""
             },
             "require": {
@@ -1462,7 +1508,62 @@
                 "laravel",
                 "lumen"
             ],
-            "time": "2019-12-26T14:51:41+00:00"
+            "time": "2020-01-20T16:58:34+00:00"
+        },
+        {
+            "name": "lcobucci/jwt",
+            "version": "3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "^5.7 || ^7.3",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2019-05-24T18:30:49+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1544,6 +1645,69 @@
                 "psr-3"
             ],
             "time": "2019-12-20T14:22:59+00:00"
+        },
+        {
+            "name": "namshi/jose",
+            "version": "7.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/namshi/jose.git",
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/namshi/jose/zipball/89a24d7eb3040e285dd5925fcad992378b82bcff",
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff",
+                "shasum": ""
+            },
+            "require": {
+                "ext-date": "*",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-spl": "*",
+                "php": ">=5.5",
+                "symfony/polyfill-php56": "^1.0"
+            },
+            "require-dev": {
+                "phpseclib/phpseclib": "^2.0",
+                "phpunit/phpunit": "^4.5|^5.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "ext-openssl": "Allows to use OpenSSL as crypto engine.",
+                "phpseclib/phpseclib": "Allows to use Phpseclib as crypto engine, use version ^2.0."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Namshi\\JOSE\\": "src/Namshi/JOSE/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Nadalin",
+                    "email": "alessandro.nadalin@gmail.com"
+                },
+                {
+                    "name": "Alessandro Cinelli (cirpo)",
+                    "email": "alessandro.cinelli@gmail.com"
+                }
+            ],
+            "description": "JSON Object Signing and Encryption library for PHP.",
+            "keywords": [
+                "JSON Web Signature",
+                "JSON Web Token",
+                "JWS",
+                "json",
+                "jwt",
+                "token"
+            ],
+            "time": "2016-12-05T07:27:31+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2433,16 +2597,16 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v5.0.2",
+            "version": "v5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "0e6a4ced216e49d457eddcefb61132173a876d79"
+                "reference": "2a3c7fee1f1a0961fa9cf360d5da553d05095e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/0e6a4ced216e49d457eddcefb61132173a876d79",
-                "reference": "0e6a4ced216e49d457eddcefb61132173a876d79",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/2a3c7fee1f1a0961fa9cf360d5da553d05095e59",
+                "reference": "2a3c7fee1f1a0961fa9cf360d5da553d05095e59",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2655,7 @@
                 "mime",
                 "mime-type"
             ],
-            "time": "2019-11-30T14:12:50+00:00"
+            "time": "2020-01-04T14:08:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -2673,6 +2837,62 @@
             "time": "2019-11-27T14:18:11+00:00"
         },
         {
+            "name": "symfony/polyfill-php56",
+            "version": "v1.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php56.git",
+                "reference": "53dd1cdf3cb986893ccf2b96665b25b3abb384f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/53dd1cdf3cb986893ccf2b96665b25b3abb384f4",
+                "reference": "53dd1cdf3cb986893ccf2b96665b25b3abb384f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-util": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php56\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-11-27T13:56:44+00:00"
+        },
+        {
             "name": "symfony/polyfill-php72",
             "version": "v1.13.1",
             "source": {
@@ -2784,6 +3004,58 @@
                 "shim"
             ],
             "time": "2019-11-27T16:25:15+00:00"
+        },
+        {
+            "name": "symfony/polyfill-util",
+            "version": "v1.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-util.git",
+                "reference": "964a67f293b66b95883a5ed918a65354fcd2258f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/964a67f293b66b95883a5ed918a65354fcd2258f",
+                "reference": "964a67f293b66b95883a5ed918a65354fcd2258f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Util\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony utilities for portability of PHP codes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2019-11-27T13:56:44+00:00"
         },
         {
             "name": "symfony/process",
@@ -3100,6 +3372,81 @@
                 "dump"
             ],
             "time": "2020-01-04T13:00:46+00:00"
+        },
+        {
+            "name": "tymon/jwt-auth",
+            "version": "1.0.0-rc.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tymondesigns/jwt-auth.git",
+                "reference": "f57a0ff33f20d2a0c3ebc9e13ce8382a83f921a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/f57a0ff33f20d2a0c3ebc9e13ce8382a83f921a8",
+                "reference": "f57a0ff33f20d2a0c3ebc9e13ce8382a83f921a8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^5.1|^6",
+                "illuminate/contracts": "^5.1|^6",
+                "illuminate/http": "^5.1|^6",
+                "illuminate/support": "^5.1|^6",
+                "lcobucci/jwt": "^3.2",
+                "namshi/jose": "^7.0",
+                "nesbot/carbon": "^1.0|^2.0",
+                "php": "^5.5.9|^7.0"
+            },
+            "require-dev": {
+                "cartalyst/sentinel": "^2|^3",
+                "illuminate/console": "^5.1|^6",
+                "illuminate/database": "^5.1|^6",
+                "illuminate/routing": "^5.1|^6",
+                "mockery/mockery": ">=0.9.9",
+                "phpunit/phpunit": "~4.8|~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "1.0-dev"
+                },
+                "laravel": {
+                    "aliases": {
+                        "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth",
+                        "JWTFactory": "Tymon\\JWTAuth\\Facades\\JWTFactory"
+                    },
+                    "providers": [
+                        "Tymon\\JWTAuth\\Providers\\LaravelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tymon\\JWTAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Tymon",
+                    "email": "tymon148@gmail.com",
+                    "homepage": "https://tymon.xyz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Web Token Authentication for Laravel and Lumen",
+            "homepage": "https://github.com/tymondesigns/jwt-auth",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "auth",
+                "jwt",
+                "laravel"
+            ],
+            "time": "2020-01-21T13:04:35+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

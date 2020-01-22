@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\N4Loginservice;
+
 class ExampleController extends Controller
 {
     /**
@@ -12,6 +14,12 @@ class ExampleController extends Controller
     public function __construct()
     {
         //
+    }
+
+    public function prueba(N4Loginservice $loginService){
+
+        $loginService->ejecutadLogin(["username"=>"aescudero","password"=>"123123"]);
+
     }
 
     //

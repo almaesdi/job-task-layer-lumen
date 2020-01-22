@@ -21,9 +21,24 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
+
+/*
+|--------------------------------------------------------------------------
+| Register Custom Configurations Files
+|--------------------------------------------------------------------------
+|
+| Registramos cada archivo de configuracion que este ubicado en la carpeta
+| config.
+|
+*/
+collect(scandir(__DIR__ . '/../config'))->each(function ($item) use ($app) {
+    $app->configure(basename($item, '.php'));
+});
+
+//$app->configure("webservices");
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +90,8 @@ $app->singleton(
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
+$app->register(App\Providers\N4LoginServiceProvider::class);
 
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);

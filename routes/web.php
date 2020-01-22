@@ -16,7 +16,9 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
+$router->get('/prueba', 'ExampleController@prueba');
 
+$router->post('auth/login', ['uses' => 'AuthController@authenticate']);
 
 /*$router->get('/', function () use ($router) {
     return $router->app->version();

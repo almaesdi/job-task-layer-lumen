@@ -1,0 +1,42 @@
+-----------------------------------------------------------------------------------------------------------
+1) Instalacion JWT Token
+
+    Instalacion basada en el tutorial http://ziishaned.info/blog/2017/09/05/jwt-authentication-for-Lumen-5.4/
+
+    Instalamos la libreria:
+        composer require firebase/php-jwt
+
+    Modificamos el archivo bootstrap/app.php y descomentamos la linea "$app->withFacades();"
+
+    Agregamos la ruta
+        $app->post('auth/login', ['uses' => 'AuthController@authenticate']);
+
+    Creamos el controller AuthController.php en app/Http/Controllers
+
+
+
+-----------------------------------------------------------------------------------------------------------
+2) External API/Webservice Auth
+
+    Se crea la carpeta "app/Services"
+
+    Se crea el archivo N4LoginService.php (con la logica de consulta al webservice)
+
+    Se crea carpeta Config y dentro de ella el archivo de configuracion del webservice
+
+    En Lumen debemos registrar cada archivo de configuracion colocando la siguiente linea de codigo en el
+    archivo bootstrap/app.php:
+        $app->configure("webservices");
+
+    *En vez de colocar cada archivo particularmente, podemos crear un codigo para que scanee la carpeta
+    y registre cada archivo dentro de ella:
+        collect(scandir(__DIR__ . '/../config'))->each(function ($item) use ($app) {
+            $app->configure(basename($item, '.php'));
+        });
+
+    Se crea el Service Provider en app/providers
+        N4LoginServiceProvider
+
+    Se registra el service Provider en bootstrap/app.php
+        $app->register(App\Providers\N4LoginServiceProvider::class);
+
