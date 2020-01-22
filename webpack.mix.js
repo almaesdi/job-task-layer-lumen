@@ -6,8 +6,8 @@ mix.js("resources/assets/js/main.js", "public/js")
 mix.webpackConfig({
     resolve: {
         alias: {
-        'components' :  __dirname + '/resources/js/components',
-        'services' :  __dirname + '/resources/js/services',
+        'components' :  __dirname + '/resources/assets/js/components',
+        'services' :  __dirname + '/resources/assets/js/services',
         },
     },
 })

@@ -52,7 +52,7 @@ se debe instalar de manera manual:
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
 
-- Instalar bootsrap (jquery)
+- Instalar bootsrap
 
     Ejecutamos boostraps y sus dependencias con el siguiente comando:
         npm install bootstrap jquery popper.js --save
@@ -68,3 +68,10 @@ se debe instalar de manera manual:
             // Bootstrap
             @import '~bootstrap/scss/bootstrap';
 
+- Instalar fontawesome
+
+    Ejecutamos
+        npm install font-awesome
+
+    Lo importamos en el archivo app.scss
+        @import "~font-awesome/scss/font-awesome.scss";

@@ -1,21 +1,22 @@
 <template>
- <div class="container">
-      <h1>Aplicacion APP</h1>
-    <!--
-      <ul class="nav nav-tabs">
-        <router-link tag="li" active-class="active" exact to="/"><a>Dashboard</a></router-link>
-        <router-link tag="li" active-class="active" to="/tasks"><a>Tareas</a></router-link>
-      </ul>
+    <div>
+        <app-navbar></app-navbar>
 
-    <router-view></router-view>-->
+        <div class="container">
+            <!--<router-view></router-view>-->
+        </div>
 
-    <!--<router-view></router-view>-->
 
-  </div>
+    </div>
 </template>
 
 <script>
-export default {
 
+import header from './header/Navbar.vue'
+
+export default {
+    components : {
+        'app-navbar' : header,
+    }
 }
 </script>

@@ -1,0 +1,14 @@
+-----------------------------------------------------------------------------------------------------------
+1) Vue Router
+
+    Instalamos la dependencia:
+        npm install vue-router --savedev
+
+    Creamos la carpeta router dentro de resources/assets/js
+
+    Dentro de router, creamos el archivo index.js y el archivo routes.js
+
+    Agregarmos el router a nuestro main.js
+
+-----------------------------------------------------------------------------------------------------------
+2) Vue Router

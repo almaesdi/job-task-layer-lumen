@@ -16,6 +16,14 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
+
+
 /*$router->get('/', function () use ($router) {
     return $router->app->version();
+});*/
+
+
+/*Ruta para generar un APP_KEY
+$router->get('/key', function() {
+    return \Illuminate\Support\Str::random(32);
 });*/
