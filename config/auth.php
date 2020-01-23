@@ -1,25 +1,27 @@
+
 <?php
-
-use app\User;
-
-return [
+return[
     'defaults' => [
-        'guard' => 'api',
-        'passwords' => 'users',
+      'guard' => env("AUTH_GUARD", "api"),
+      'passwords' => 'users',
     ],
-
     'guards' => [
         'api' => [
-            //'driver' => 'jwt',
-            'driver' => 'token',
+            'driver' => 'api',
             'provider' => 'users',
         ],
     ],
-
     'providers' => [
-        'users' => [
-            'driver' => 'loginService',
-            //'model' => User::class
-        ]
-    ]
+      'users' => [
+          'driver' => 'eloquent',
+          'model' => App\User::class,
+      ],
+    ],
+    'passwords' => [
+      'users' => [
+          'provider' => 'users',
+          'table' => 'password_resets',
+          'expire' => 60,
+      ],
+    ],
 ];

@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
+use App\Services\Auth\ApiGuard;
+
 use Illuminate\Support\Facades\Auth;
 use App\Services\Loginservice;
 
@@ -38,11 +40,15 @@ class AuthServiceProvider extends ServiceProvider
             return new Loginservice($app['hash'],$app->make('App\User'));
         });
 
-        /*
+         // add custom guard
+        Auth::extend('api', function ($app, $name, array $config) {
+            return new ApiGuard(Auth::createUserProvider($config['provider']), $app->make('request'));
+        });
+
         $this->app['auth']->viaRequest('api', function ($request) {
             if ($request->input('api_token')) {
                 return User::where('api_token', $request->input('api_token'))->first();
             }
-        });*/
+        });
     }
 }
