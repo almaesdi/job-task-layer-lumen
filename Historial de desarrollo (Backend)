@@ -40,3 +40,5 @@
     Se registra el service Provider en bootstrap/app.php
         $app->register(App\Providers\N4LoginServiceProvider::class);
 
+    En el service provider registramos las dependencias
+

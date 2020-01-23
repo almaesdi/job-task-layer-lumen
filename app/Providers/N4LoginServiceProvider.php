@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\User;
 use Illuminate\Support\ServiceProvider;
-use app\Webservices\N4LoginWebservice;
-use app\Services\N4LoginService;
+
+use App\Webservices\N4LoginWebservice;
+use Illuminate\Support\Facades\Auth;
+use App\Services\Loginservice;
 
 class N4LoginServiceProvider extends ServiceProvider
 {
@@ -16,8 +18,15 @@ class N4LoginServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //Bindeo las configuraciones al webservice Login de N4
+        $this->app->bind('App\Webservices\N4LoginWebservice', function ($app) {
+            return new N4LoginWebservice(config('webservices.tps_esb_url'),config('webservices.login_service_name'));
+        });
 
-
+        //Bindeo el webservice a la capa de servicio
+        /*$this->app->bind('App\Services\Loginservice', function ($app) {
+            return new Loginservice($app->make('App\Webservices\N4LoginWebservice'));
+        });*/
 
     }
 
@@ -28,14 +37,11 @@ class N4LoginServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //Bindeo la configuracion del webservice ESB N4 con lo del archivo
-        $this->app->bind(N4LoginWebservice::class, function ($app) {
-            return new N4LoginWebservice(config('webservices.tps_esb_url'),config('webservices.login_service_name'));
-        });
+
 
         //Bindeo el User con el webservice de login
-        $this->app->bind(N4LoginService::class, function ($app) {
+        /*$this->app->bind(N4LoginService::class, function ($app) {
             return new N4LoginService($app->make(N4LoginWebservice::class));
-        });
+        });*/
     }
 }

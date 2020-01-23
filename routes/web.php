@@ -17,6 +17,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/prueba', 'ExampleController@prueba');
+$router->get('/prueba2', 'ExampleController@prueba2');
 
 $router->post('auth/login', ['uses' => 'AuthController@authenticate']);
 
