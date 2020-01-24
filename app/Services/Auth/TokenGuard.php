@@ -38,11 +38,36 @@ class TokenGuard implements Guard
     $this->user = NULL;
     }
 
-    public function attempt()
+    public function attempt(array $credentials = [], $login = true)
     {
-      dd("funciondeguard");
+        $this->lastAttempted = $user = $this->provider->retrieveByCredentials($credentials);
+
+        if ($this->hasValidCredentials($user, $credentials)) {
+            return $login ? $this->login($user) : true;
+        }
+
+        return false;
     }
 
+    protected function hasValidCredentials($user, $credentials)
+    {
+        return $user !== null && $this->provider->validateCredentials($user, $credentials);
+    }
+
+    public function login(JWTSubject $user)
+    {
+        $token = $this->jwt->fromUser($user);
+        $this->setToken($token)->setUser($user);
+
+        return $token;
+    }
+
+    public function setToken($token)
+    {
+        $this->jwt->setToken($token);
+
+        return $this;
+    }
 
     public function user()
     {

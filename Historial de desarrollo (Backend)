@@ -2,7 +2,7 @@
 1) Instalacion JWT Token
 
     Instalacion basada en el tutorial http://ziishaned.info/blog/2017/09/05/jwt-authentication-for-Lumen-5.4/
-
+                                      https://medium.com/tech-tajawal/jwt-authentication-for-lumen-5-6-2376fd38d454
     Instalamos la libreria:
         composer require firebase/php-jwt
 

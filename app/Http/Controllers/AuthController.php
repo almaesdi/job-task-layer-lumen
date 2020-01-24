@@ -10,7 +10,7 @@ use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
-class AuthController extends BaseController
+class AuthController extends Controller
 {
     /**
      * The request instance.
@@ -63,10 +63,8 @@ class AuthController extends BaseController
         // Find the user by email
         //$user = User::where('email', $this->request->input('email'))->first();
 
-        //COMODIN
-        $user = new User;
-        $user->email = $this->request->input('email');
-        $user->password = Hash::make($this->request->input('password'));
+        $user->email =$this->request['email'];
+        $user->password =Hash::Make($this->request['password']);
 
         if (!$user) {
             // You wil probably have some sort of helpers or whatever
