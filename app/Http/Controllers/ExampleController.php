@@ -38,7 +38,7 @@ class ExampleController extends Controller
         //$loginService->ejecutadLogin(["username"=>"aescudero","password"=>"123123"]);
 
         //dd(Auth::attempt(['email' => "asda@asd.com", 'password' => "elterriblepass"]));
-        Auth::funciondeguard();
+        Auth::attempt();
     }
 
     //
