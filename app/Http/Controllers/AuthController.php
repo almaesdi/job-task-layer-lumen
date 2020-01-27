@@ -10,6 +10,8 @@ use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
+use Illuminate\Support\Facades\Auth;
+
 class AuthController extends Controller
 {
     /**
@@ -55,17 +57,30 @@ class AuthController extends Controller
      * @return mixed
      */
     public function authenticate(User $user) {
-        $this->validate($this->request, [
+        /*$this->validate($this->request, [
             'email'     => 'required|email',
             'password'  => 'required'
-        ]);
+        ]);*/
+
+        $credentials= ['username' => $this->request['username'], 'password' => $this->request['password']];
+
+        $user = Auth::guard('external')->attempt($credentials);
 
         // Find the user by email
         //$user = User::where('email', $this->request->input('email'))->first();
 
-        $user->email =$this->request['email'];
-        $user->password =Hash::Make($this->request['password']);
+        //$user->username = $this->request['username'];
+        //$user->password = Hash::Make($this->request['password']);
 
+        if ($user){
+            $token = Auth::createToken($user);
+
+            return response()->json([
+                'token' => $token
+            ], 200);
+        }
+
+        /*
         if (!$user) {
             // You wil probably have some sort of helpers or whatever
             // to make sure that you have the same response format for
@@ -86,6 +101,6 @@ class AuthController extends Controller
         // Bad Request response
         return response()->json([
             'error' => 'Email or password is wrong.'
-        ], 400);
+        ], 400);*/
     }
 }

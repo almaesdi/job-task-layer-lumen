@@ -30,15 +30,8 @@ class ExampleController extends Controller
     }
 
     public function prueba2(){
+        dd("Entraste, osea que estabas logeado");
 
-        //$params = array(["username"=>"aescudero","password"=>"123123"]);
-
-        //dd($Loginservice->ejecutarLogin(["username"=>"aescudero","password"=>"123123"]));
-
-        //$loginService->ejecutadLogin(["username"=>"aescudero","password"=>"123123"]);
-
-        //dd(Auth::attempt(['email' => "asda@asd.com", 'password' => "elterriblepass"]));
-        Auth::attempt();
     }
 
     //

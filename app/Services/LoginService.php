@@ -7,38 +7,33 @@ use app\Webservices\N4LoginWebservice;
 use Illuminate\Contracts\Auth\UserProvider;
 
 use Illuminate\Contracts\Hashing\Hasher as HasherContract;
+use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 use app\User;
 
 class Loginservice implements UserProvider{
 
-    private $n4loginwebservice;
-
-    /*public function __construct($n4loginwebservice)
-    {
-      $this->n4loginwebservice = $n4loginwebservice;
-    }
-
-    public function ejecutarLogin ($array){
-        dd($this->n4loginwebservice->processLoginInN4($array));
-    }*/
+    private $loginwebservice;
 
     private $model;
 
     protected $hasher;
 
-    public function __construct(HasherContract $hasher, User $userModel)
+    public function __construct(N4LoginWebservice $n4loginwebservice, HasherContract $hasher, User $userModel)
     {
+        $this->loginwebservice = $n4loginwebservice;
         $this->hasher = $hasher;
         $this->model = $userModel;
     }
 
-    public function ejecutarLogin ($array){
-
-    }
-
     public function retrieveByCredentials(array $credentials)
     {
-        dd("retrieveByCredentials");
+        if (empty($credentials) || (count($credentials) === 1 && array_key_exists('password', $credentials))) {
+            return;
+        }
+
+        $this->model = new User($this->loginwebservice->processLoginInN4($credentials));
+        //dd($this->model);
+        return $this->model;
     }
 
     public function retrieveById($identifier)
@@ -51,8 +46,8 @@ class Loginservice implements UserProvider{
 
     public function validateCredentials(UserContract $user, array $credentials)
     {
-        //return true;
-         return $this->hasher->check(
+
+        return $this->hasher->check(
             $credentials['password'], $user->getAuthPassword()
         );
     }
@@ -70,6 +65,10 @@ class Loginservice implements UserProvider{
         return $user ?: null;
     }
 
-    public function retrieveByToken($identifier, $token) { }
-    public function updateRememberToken(User $user, $token) { }
+    public function retrieveByToken($identifier, $token) {
+        return null;
+     }
+    public function updateRememberToken(UserContract $user, $token) {
+        return null;
+     }
 }

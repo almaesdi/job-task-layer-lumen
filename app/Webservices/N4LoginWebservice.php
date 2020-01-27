@@ -9,7 +9,7 @@ class N4LoginWebservice{
 
     public function __construct($host, $servicename)
     {
-      $this->url = $host.$servicename; //
+      $this->url = $host.$servicename;
     }
 
     public function processLoginInN4(Array $credentials){

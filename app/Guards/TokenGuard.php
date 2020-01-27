@@ -1,21 +1,23 @@
 <?php
-// app/Services/Auth/ApiGuard.php
-namespace App\Services\Auth;
+// app/Guard/TokenGuard.php
+namespace App\Guards;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Contracts\Auth\UserProvider;
-
+use Firebase\JWT\JWT;
 use \Illuminate\Contracts\Auth\Authenticatable;
+
+use App\User;
 
 class TokenGuard implements Guard
 {
     use GuardHelpers;
 
     protected $request;
-    protected $provider;
     protected $user;
+    protected $key;
 
     /**
      * The name of the token "column" in persistent storage.
@@ -31,15 +33,17 @@ class TokenGuard implements Guard
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    public function __construct(UserProvider $provider, Request $request)
+    public function __construct(Request $request)
     {
-    $this->request = $request;
-    $this->provider = $provider;
-    $this->user = NULL;
+        $this->request = $request;
+        $this->key = env('JWT_SECRET');
+        $this->user = NULL;
     }
 
     public function attempt(array $credentials = [], $login = true)
     {
+        dd( $this->provider->retrieveByCredentials($credentials));
+
         $this->lastAttempted = $user = $this->provider->retrieveByCredentials($credentials);
 
         if ($this->hasValidCredentials($user, $credentials)) {
@@ -123,6 +127,53 @@ class TokenGuard implements Guard
         }
 
         return false;
+    }
+
+
+    public function createToken(User $user){
+        $payload = [
+            'iss' => "lumen-jwt", // Issuer of the token
+            'sub' => $user->username, // Subject of the token
+            'iat' => time(), // Time when JWT was issued.
+            'exp' => time() + 60*60 // Expiration time
+        ];
+
+        // As you can see we are passing `JWT_SECRET` as the second parameter that will
+        // be used to decode the token in the future.
+        return JWT::encode($payload, $this->key);
+    }
+
+    public function checkToken($token){
+
+        try {
+            $decoded = JWT::decode($token,$this->key,['HS256']);
+        }catch(\Firebase\JWT\ExpiredException $e){
+            return response()->json([
+                'error' => 'Provided token is expired.'
+            ], 400);
+        }catch(\DomainException $e){
+            return response()->json([
+                'error' => 'An error while decoding token.'
+            ], 400);
+        }catch(\UnexpectedValueException $e){
+            return response()->json([
+                'error' => 'An error while decoding token.'
+            ], 400);
+       }
+
+       return $decoded;
+
+       /* if(isset($decoded) && $decoded && $decoded->sub){
+            $auth = true;
+        }else{
+            $auth = false;
+        }
+
+        if($getIdentity){
+            return $decoded;
+        }
+
+        return $auth;*/
     }
 
 }
