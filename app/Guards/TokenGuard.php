@@ -148,17 +148,11 @@ class TokenGuard implements Guard
         try {
             $decoded = JWT::decode($token,$this->key,['HS256']);
         }catch(\Firebase\JWT\ExpiredException $e){
-            return response()->json([
-                'error' => 'Provided token is expired.'
-            ], 400);
+            throw new \Firebase\JWT\ExpiredException('Provided token is expired.',400);
         }catch(\DomainException $e){
-            return response()->json([
-                'error' => 'An error while decoding token.'
-            ], 400);
+            throw new \DomainException('An error while decoding token.',400);
         }catch(\UnexpectedValueException $e){
-            return response()->json([
-                'error' => 'An error while decoding token.'
-            ], 400);
+             throw new \UnexpectedValueException('An error while decoding token.',400);
        }
 
        return $decoded;
