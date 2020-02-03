@@ -11,4 +11,41 @@
     Agregarmos el router a nuestro main.js
 
 -----------------------------------------------------------------------------------------------------------
-2) Vue Router
+2) Vuex (storage)
+
+    Instalamos la dependencia
+        npm install vuex --savedev
+
+    Creamos la carepta "store" dentro de resources/assets/js
+
+    Dentro de store, crearemos el archivo index.js y el archivo userStorage.js
+
+    Agregamos el store a nuestro main.js
+
+-----------------------------------------------------------------------------------------------------------
+3) Services
+
+    Crearemos la carpeta "services" dentro de resources/assets/js
+
+    Creremos el primer servicio llamado authService.js
+
+
+-----------------------------------------------------------------------------------------------------------
+3) userStorage (Store)
+
+    Agregamos el authService a nuestro userStorage para poder loguear al usuario.
+
+    Crearemos el metodo login
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
+3) Promises
+
+    Son segmentos de codigos que se ejecutaran asincronamente pero siempre nos daran un feedback
+    de su ejecucion.
+    Si el codigo es exitoso podemos devolver un resolve(valor) y en caso de fallo un reject(valor), ambas
+    funciones aceptan como argumento un valor de retorno (respuestas, variables, etc).
+    Generalmente son usadas en las llamadas a API, ya que no sabremos cuanto tiempo tardará.

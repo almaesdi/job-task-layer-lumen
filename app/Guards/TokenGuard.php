@@ -15,9 +15,26 @@ class TokenGuard implements Guard
 {
     use GuardHelpers;
 
+    /**
+     * The request instance.
+     *
+     * @var \Illuminate\Http\Request
+     */
+    protected $token;
+
+    /**
+     * The request instance.
+     *
+     * @var \Illuminate\Http\Request
+     */
     protected $request;
-    protected $user;
-    protected $key;
+
+    /**
+     * The name of the query string item from the request containing the API token.
+     *
+     * @var string
+     */
+    protected $inputKey;
 
     /**
      * The name of the token "column" in persistent storage.
@@ -27,50 +44,25 @@ class TokenGuard implements Guard
     protected $storageKey;
 
     /**
+    *
+    */
+    protected $tokenService;
+
+    /**
      * Create a new authentication guard.
      *
      * @param  \Illuminate\Contracts\Auth\UserProvider  $provider
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request,$tokenService,$inputKey = 'token',$storageKey = 'token')
     {
         $this->request = $request;
+        $this->tokenService = $tokenService;
+        $this->inputKey = $inputKey;
+        $this->storageKey = $storageKey;
         $this->key = env('JWT_SECRET');
         $this->user = NULL;
-    }
-
-    public function attempt(array $credentials = [], $login = true)
-    {
-        dd( $this->provider->retrieveByCredentials($credentials));
-
-        $this->lastAttempted = $user = $this->provider->retrieveByCredentials($credentials);
-
-        if ($this->hasValidCredentials($user, $credentials)) {
-            return $login ? $this->login($user) : true;
-        }
-
-        return false;
-    }
-
-    protected function hasValidCredentials($user, $credentials)
-    {
-        return $user !== null && $this->provider->validateCredentials($user, $credentials);
-    }
-
-    public function login(JWTSubject $user)
-    {
-        $token = $this->jwt->fromUser($user);
-        $this->setToken($token)->setUser($user);
-
-        return $token;
-    }
-
-    public function setToken($token)
-    {
-        $this->jwt->setToken($token);
-
-        return $this;
     }
 
     public function user()
@@ -82,14 +74,10 @@ class TokenGuard implements Guard
             return $this->user;
         }
 
-        $user = null;
-
         $token = $this->getTokenForRequest();
 
         if (! empty($token)) {
-            $user = $this->provider->retrieveByCredentials([
-                $this->storageKey => $this->hash ? hash('sha256', $token) : $token,
-            ]);
+            $user = $this->tokenService->retrieveByToken($token);
         }
 
         return $this->user = $user;
@@ -98,6 +86,10 @@ class TokenGuard implements Guard
     public function getTokenForRequest()
     {
         $token = $this->request->query($this->inputKey);
+
+        if (empty($token)) {
+            $token = $this->request->header($this->inputKey,null);
+        }
 
         if (empty($token)) {
             $token = $this->request->input($this->inputKey);
@@ -114,6 +106,7 @@ class TokenGuard implements Guard
         return $token;
     }
 
+    /*Metodo obligatorio de la interface */
     public function validate(array $credentials = [])
     {
         if (empty($credentials[$this->inputKey])) {
@@ -130,44 +123,23 @@ class TokenGuard implements Guard
     }
 
 
-    public function createToken(User $user){
-        $payload = [
-            'iss' => "lumen-jwt", // Issuer of the token
-            'sub' => $user->username, // Subject of the token
-            'iat' => time(), // Time when JWT was issued.
-            'exp' => time() + 60*60 // Expiration time
-        ];
+    public function createTokenByUser(User $user){
 
-        // As you can see we are passing `JWT_SECRET` as the second parameter that will
-        // be used to decode the token in the future.
-        return JWT::encode($payload, $this->key);
+        $this->setUser($user);
+
+        $token = $this->tokenService->createToken($user);
+
+        return $this->token = $token;
     }
 
-    public function checkToken($token){
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
+    }
 
-        try {
-            $decoded = JWT::decode($token,$this->key,['HS256']);
-        }catch(\Firebase\JWT\ExpiredException $e){
-            throw new \Firebase\JWT\ExpiredException('Provided token is expired.',400);
-        }catch(\DomainException $e){
-            throw new \DomainException('An error while decoding token.',400);
-        }catch(\UnexpectedValueException $e){
-             throw new \UnexpectedValueException('An error while decoding token.',400);
-       }
-
-       return $decoded;
-
-       /* if(isset($decoded) && $decoded && $decoded->sub){
-            $auth = true;
-        }else{
-            $auth = false;
-        }
-
-        if($getIdentity){
-            return $decoded;
-        }
-
-        return $auth;*/
+    public function getToken(){
+        return $this->token;
     }
 
 }

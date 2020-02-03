@@ -31,9 +31,14 @@ class Loginservice implements UserProvider{
             return;
         }
 
-        $this->model = new User($this->loginwebservice->processLoginInN4($credentials));
-        //dd($this->model);
-        return $this->model;
+        $respuesta = $this->loginwebservice->processLoginInN4($credentials);
+
+        if($respuesta){
+            $this->model = new User($respuesta);
+            return $this->model;
+        }
+
+        return null;
     }
 
     public function retrieveById($identifier)

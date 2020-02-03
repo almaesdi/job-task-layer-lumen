@@ -32,31 +32,12 @@ class AuthController extends Controller
     }
 
     /**
-     * Create a new token.
-     *
-     * @param  \App\User   $user
-     * @return string
-     */
-    protected function jwt(User $user) {
-        $payload = [
-            'iss' => "lumen-jwt", // Issuer of the token
-            'sub' => $user->id, // Subject of the token
-            'iat' => time(), // Time when JWT was issued.
-            'exp' => time() + 60*60 // Expiration time
-        ];
-
-        // As you can see we are passing `JWT_SECRET` as the second parameter that will
-        // be used to decode the token in the future.
-        return JWT::encode($payload, env('JWT_SECRET'));
-    }
-
-    /**
      * Authenticate a user and return the token if the provided credentials are correct.
      *
      * @param  \App\User   $user
      * @return mixed
      */
-    public function authenticate(User $user) {
+    public function authenticate() {
         /*$this->validate($this->request, [
             'email'     => 'required|email',
             'password'  => 'required'
@@ -66,18 +47,29 @@ class AuthController extends Controller
 
         $user = Auth::guard('external')->attempt($credentials);
 
-        // Find the user by email
-        //$user = User::where('email', $this->request->input('email'))->first();
-
-        //$user->username = $this->request['username'];
-        //$user->password = Hash::Make($this->request['password']);
-
         if ($user){
-            $token = Auth::createToken($user);
+
+            $token = Auth::createTokenByUser($user);
 
             return response()->json([
-                'token' => $token
+                'success' => [
+                    'status' => 200,
+                    'message' => "Your Login Was Successful.",
+                    'data' => [
+                        'user' => $user->username,
+                        'token' => $token
+                    ]
+                ]
             ], 200);
+
+        } else {
+            return response()->json([
+                'error' => [
+                    'status' => 400,
+                    'message' => "Email or password is wrong.",
+                    'data' => null
+                ]
+            ], 400);
         }
 
         /*

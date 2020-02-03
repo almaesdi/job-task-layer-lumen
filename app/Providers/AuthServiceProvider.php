@@ -48,7 +48,7 @@ class AuthServiceProvider extends ServiceProvider
 
          //Add Token Guard (local)
         Auth::extend('token', function ($app, $name, array $config) {
-        return new TokenGuard($app->make('request'));
+        return new TokenGuard($app->make('request'), $app->make('App\Services\TokenService'));
         });
 
        /* $this->app['auth']->viaRequest('api', function ($request) {

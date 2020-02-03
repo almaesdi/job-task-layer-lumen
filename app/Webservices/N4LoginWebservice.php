@@ -35,6 +35,8 @@ class N4LoginWebservice{
                 $credentials["roles"] = $userRoles;
 
                 return $credentials;
+            }else{
+                return null;
             }
 
         }catch (\Exception $e) {

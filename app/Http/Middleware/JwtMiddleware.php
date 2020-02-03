@@ -14,33 +14,22 @@ class JwtMiddleware
 {
     public function handle($request, Closure $next, $guard = null)
     {
-        $token = $request->header('token',null);
-
-        if(!$token) {
-            return response()->json([
-                'error' => [
-                    'status' => 401,
-                    'message' => 'Token not provided.'
-                ]
-            ], 200);
-        }
-
         try {
-            $credentials = Auth::checkToken($token);
+            Auth::user();
         }catch(Exception $e){
-            return response()->json([
-                'error' => [
-                    'status' => $e->getCode(),
-                    'message' => $e->getMessage()
-                ]
-            ], 200);
+            return $this->respondeWithErrors($e->getCode(),$e->getMessage());
         }
-
-        /*$user = User::find($credentials->sub);
-
-        // Now let's put the user in the request class so that you can grab it from there
-        $request->auth = $user;*/
 
         return $next($request);
     }
+
+    public function respondeWithErrors($status, $message){
+        return response()->json([
+            'error' => [
+                'status' => $status,
+                'message' => $message
+            ]
+        ], 200);
+    }
+
 }

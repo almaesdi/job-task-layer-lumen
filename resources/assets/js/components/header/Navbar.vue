@@ -29,11 +29,10 @@
                 </li>
             </ul>
 
-            <button class="btn btn-outline-success my-2 my-sm-0" id="show-modal" @click="showModal = true">
-                <span class="fa fa-sign-in"></span> Login
-            </button>
+            <app-navbar-user></app-navbar-user>
+
             <!-- use the modal component, pass in the prop -->
-            <app-navbar-user v-if="showModal" @close="showModal = false"></app-navbar-user>
+            <!--<app-navbar-user v-if="showModal" @close="showModal = false"></app-navbar-user>-->
 
             <!--<form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -48,21 +47,10 @@
 <script>
 
 import navbarUser from './Navbar-user.vue'
-import prueba from './prueba.vue'
 
 export default {
-    data (){
-        return {
-            showModal: false,
-        }
-    },
     components: {
-        'app-navbar-user' : prueba
-    },
-    methods: {
-        showLoginForm(){
-
-        }
+        'app-navbar-user' : navbarUser,
     }
 }
 </script>

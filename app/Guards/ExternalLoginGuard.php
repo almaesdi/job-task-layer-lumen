@@ -47,11 +47,7 @@ class ExternalLoginGuard implements Guard
             return $user;
         }
 
-        /*if ($this->hasValidCredentials($user, $credentials)) {
-            return $login ? $this->login($user) : true;
-        }*/
-
-        return false;
+        return null;
     }
 
     protected function hasValidCredentials($user, $credentials)
